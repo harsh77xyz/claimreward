@@ -7,34 +7,78 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.rawgit.com/websanova/wScratchPad/master/wScratchPad.min.js"></script>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; background-color: #f0f0f0; }
-        #scratch { width: 300px; height: 150px; background: #ccc; margin: auto; border-radius: 10px; }
-        #amount { 
-            font-size: 30px; 
-            font-weight: bold; 
-            margin-top: 20px; 
-            color: #f39c12; 
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); 
-            display: none; 
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        #scratch {
+            width: 90vw; /* 90% of viewport width */
+            height: 50vh; /* 50% of viewport height */
+            background: #ccc;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #amount {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #f39c12;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
             animation: fadeIn 1s ease-in-out;
         }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+
         .amount-text {
             color: #2c3e50;
             font-size: 50px;
             font-weight: bold;
             text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
         }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 22px;
+            }
+
+            #scratch {
+                width: 80vw; /* Adjust width for smaller screens */
+                height: 45vh; /* Adjust height for smaller screens */
+            }
+
+            #amount {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h2 style="color: #2c3e50; font-size: 28px;">Scratch to Reveal Your Reward!</h2>
-    <div id="scratch"></div>
-    <div id="amount" class="amount-text">₹0</div>
-    
+    <div>
+        <h2>Scratch to Reveal Your Reward!</h2>
+        <div id="scratch"></div>
+        <div id="amount" class="amount-text">₹0</div>
+    </div>
+
     <script>
         $(document).ready(function(){
             let amount = 0;  // Starting amount
@@ -64,4 +108,3 @@
     </script>
 </body>
 </html>
-

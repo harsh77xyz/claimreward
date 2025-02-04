@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch to Reveal</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.rawgit.com/websanova/wScratchPad/master/wScratchPad.min.js"></script>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: #f0f0f0; }
+        #scratch { width: 300px; height: 150px; background: #ccc; margin: auto; border-radius: 10px; }
+        #amount { 
+            font-size: 30px; 
+            font-weight: bold; 
+            margin-top: 20px; 
+            color: #f39c12; 
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); 
+            display: none; 
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .amount-text {
+            color: #2c3e50;
+            font-size: 50px;
+            font-weight: bold;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: #2c3e50; font-size: 28px;">Scratch to Reveal Your Reward!</h2>
+    <div id="scratch"></div>
+    <div id="amount" class="amount-text">₹0</div>
+    
+    <script>
+        $(document).ready(function(){
+            let amount = 0;  // Starting amount
+            const maxAmount = 21000; // Maximum amount to reveal
+
+            // Initialize the scratch pad
+            $("#scratch").wScratchPad({
+                size: 30, // Brush size
+                bg: "#FFF", // Background color
+                fg: "#888", // Scratch surface color
+                scratchMove: function (e, percent) {
+                    // Calculate the amount based on percent scratched
+                    amount = Math.round((percent / 100) * maxAmount);  
+                    
+                    // Display the amount in a dynamic and animated way
+                    $("#amount").fadeIn(300).text("₹" + amount.toLocaleString()); // Apply fadeIn effect and format the number
+
+                    // If the user scratches more than 50%, redirect
+                    if (percent > 50) {
+                        setTimeout(function() {
+                            window.location.href = "https://rushbyhike.app.link/SxtZ7wQEwQb"; // 
+                        }, 1000); // 1 second delay before redirect
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
